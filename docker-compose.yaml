@@ -1,0 +1,16 @@
+services:
+
+  database:
+    image: postgres:latest
+    container_name: dbwarehouse
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - 5440:5432    
+    volumes:
+      - ~/apps/postgres:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+
