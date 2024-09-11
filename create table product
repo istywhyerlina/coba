@@ -1,5 +1,4 @@
- CREATE TABLE olx_data
-(
+ CREATE TABLE olx_data(
 uuid SERIAL NOT NULL,
 title varchar(300),
 price float8,
@@ -57,4 +56,34 @@ discount_price  float,
 actual_price float,
 created_at TIMESTAMP NOT NULL DEFAULT NOW(),
 CONSTRAINT pk_sales_data PRIMARY KEY (id)
+);
+
+
+CREATE TABLE product_data(
+"uuid" serial NOT NULL,
+"id" varchar,
+"prices.amountMax" float,
+"prices.amountMin" float,
+"prices.availability" varchar,
+"prices.condition" varchar,
+"prices.currency" varchar,
+"prices.dateSeen" varchar,
+"prices.isSale" boolean,
+"prices.merchant" varchar,
+"prices.shipping" varchar,
+"prices.sourceURLs" varchar,
+"asins" varchar,
+"brand" varchar,
+"categories" varchar,
+"dateAdded" timestamp with time zone ,
+"dateUpdated" timestamp with time zone ,
+"keys" varchar,
+"manufacturer" varchar,
+"manufacturerNumber" varchar,
+"name" varchar,
+"primaryCategories" varchar,
+"upc" varchar,
+"weight" varchar,
+"created_at" TIMESTAMP  DEFAULT NOW(),
+CONSTRAINT pk_product_data PRIMARY KEY (uuid)
 );

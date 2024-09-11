@@ -217,9 +217,8 @@ def transform_productdata(source,result):
     df=pd.read_csv(source,sep=',')
     df=df.drop(['sourceURLs','imageURLs',	'Unnamed: 26','Unnamed: 27','Unnamed: 28','Unnamed: 29','Unnamed: 30','ean',],axis=1)
     df=df[(df['id'].str.startswith('AV' or 'AW', na=False))]
-    # for i in range(len(df)):
-    #     df.loc[i,'dateAdded']=datetime.fromisoformat(df['dateAdded'][i][:-1]).astimezone(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')
-    #     df.loc[i,'dateUpdated']=datetime.fromisoformat(df['dateUpdated'][i][:-1]).astimezone(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')
+    df['dateAdded']=pd.to_datetime(df['dateAdded'], errors='coerce')
+    df['dateUpdated']=pd.to_datetime(df['dateUpdated'], errors='coerce')
     df.to_csv(result , sep=';',index=False)
 
 # source=f'C:/Users/istyw/Downloads/Final Project/raw/ElectronicsProductsPricingData.csv'
